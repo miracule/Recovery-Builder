@@ -62,7 +62,7 @@ jobs:
          env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
          with:
-          tag_name: TWRP_10.0
+          tag_name: TWRP_12.1
           name: TWRP-BC3
           files: | 
             work/out/target/product/BC3/recovery.img
