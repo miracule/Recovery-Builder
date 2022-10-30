@@ -13,10 +13,10 @@ on:
   workflow_dispatch:
 
 env:
-  MANIFEST: https://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni -b twrp-10.0-deprecated
-  DEVICE: TECNO-BC3
-  DT_LINK: https://github.com/miracule/android_device_tecno_TECNO-BC3
-  DT_PATH: device/tecno/TECNO-BC3
+  MANIFEST: https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-12.1
+  DEVICE: BC3
+  DT_LINK: https://github.com/miracule/android_device_tecno_BC3
+  DT_PATH: device/tecno/BC3
   TARGET: recoveryimage
   TZ: Asia/manila
 
@@ -55,7 +55,7 @@ jobs:
        - name: Build
          run: |
               cd work
-              . build/envsetup.sh &&lunch omni_TECNO-BC3-eng &&export ALLOW_MISSING_DEPENDENCIES=true && mka $TARGET
+              . build/envsetup.sh &&lunch omni_$DEVICE-eng &&export ALLOW_MISSING_DEPENDENCIES=true && mka $TARGET
              
        - name: Release recovery image
          uses: softprops/action-gh-release@v1
@@ -63,6 +63,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
          with:
           tag_name: TWRP_10.0
-          name: TWRP-TECNO-BC3
+          name: TWRP-BC3
           files: | 
-            work/out/target/product/TECNO-BC3/recovery.img
+            work/out/target/product/BC3/recovery.img
