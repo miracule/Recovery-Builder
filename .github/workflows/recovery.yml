@@ -54,9 +54,7 @@ jobs:
              
        - name: Build
          run: |
-              cd work
-              . build/envsetup.sh &&lunch omni_$DEVICE-eng &&export ALLOW_MISSING_DEPENDENCIES=true && mka $TARGET
-             
+              cd work; export ALLOW_MISSING_DEPENDENCIES=true; . build/envsetup.sh; lunch twrp_BC3-eng
        - name: Release recovery image
          uses: softprops/action-gh-release@v1
          env:
